@@ -16,4 +16,6 @@ int main() {
   (p1)++;
   printf("End de p1: %p\n", p1); 
   printf("End de p2: %p\n", p2);
+
+  return 0;
 }
