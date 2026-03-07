@@ -1,3 +1,10 @@
+/*
+Nome: Guilherme Henrique Ferreira de Oliveira 
+Matrícula: 54883
+Lista: 1
+Exercício: 3
+*/
+
 /********************************************************************************************************
  *   Escreva um programa que contenha duas variáveis inteiras. Compare seus endereços e exiba o maior   *
  *   endereço.                                                                                          *
@@ -6,8 +13,8 @@
 
 int 
 main() {
-    int i = 750, j = 400, *aux;
-    printf("%p = %d\n%p = %d\n", &i, i, &j, j);
+	int i = 750, j = 400, *aux;
+	printf("%p = %d\n%p = %d\n", &i, i, &j, j);
   
     if(&j > &i) {
         aux = &j;
