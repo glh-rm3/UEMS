@@ -1,3 +1,10 @@
+/*
+Nome: Guilherme Henrique Ferreira de Oliveira 
+Matrícula: 54883
+Lista: 1
+Exercício: 6
+*/
+
 /*****************************************************************************************************
  * Escreva um programa que declare duas variáveis do tipo inteiro e duas do tipo ponteiro de inteiro *
  * apontando para essas variáveis. Utilizando ponteiros, o programa deve ler dois números para essas *
