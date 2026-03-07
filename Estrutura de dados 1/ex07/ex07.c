@@ -1,3 +1,10 @@
+/*
+Nome: Guilherme Henrique Ferreira de Oliveira 
+Matrícula: 54883
+Lista: 1
+Exercício: 7
+*/
+
 /*************************************************************************************************************
  * Faça um programa que declare três variáveis do tipo inteiro e três do tipo ponteiro de inteiro apontando  *
  * para essas variáveis. Utilizando ponteiros, leia três números e os imprima em ordem crescente. O          *
