@@ -1,3 +1,10 @@
+/*
+Nome: Guilherme Henrique Ferreira de Oliveira 
+Matrícula: 54883
+Lista: 1
+Exercício: 5
+*/
+
 /**********************************************************************************************************
  *  Faça um programa que leia duas variáveis do tipo inteiro (A e B) e duas do tipo ponteiro de inteiro   *
  *apontando para essas variáveis. Utilizando ponteiros, o programa deve retornar a soma do dobro dos      *
