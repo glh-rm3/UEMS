@@ -1,0 +1,27 @@
+
+Nome: Guilherme Henrique Ferreira de Oliveira 
+Matrícula: 54883
+Lista: 1
+Exercício: 1
+
+
+
+int x = 10, y = 20, *p1, *p2
+
+p1 = &x (1000)
+p2 = &y (1004)
+
+(p1)++ (1004)
+
+x = 10
+y = 20
+&x = 1000
+&y = 1004
+p1 = 1004
+p2 = 1004
+*p1 + *p2 = 40
+*(&x) = 10
+&(*p2) = 1004
+
+
+
