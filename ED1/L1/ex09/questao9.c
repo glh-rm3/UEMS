@@ -1,3 +1,10 @@
+/*
+Nome: Guilherme Henrique Ferreira de Oliveira 
+Matrícula: 54883
+Lista: 1
+Exercício: 9
+*/
+
 /******************************************************************************************************
  *  Crie um programa que contenha um array de float contendo 10 elementos. Utilizando aritmética de   *
  *  ponteiro, imprima o endereço de cada posição desse array.                                         *
