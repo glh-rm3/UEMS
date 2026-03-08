@@ -1,3 +1,10 @@
+/*
+Nome: Guilherme Henrique Ferreira de Oliveira 
+Matrícula: 54883
+Lista: 1
+Exercício: 10
+*/
+
 /***********************************************************************************************
  * Crie um programa que contenha uma matriz de float contendo 3 linhas e 3 colunas. Utilizando *
  * aritmética de ponteiro, imprima o endereço de cada posição dessa matriz                     *
