@@ -1,3 +1,10 @@
+/*
+Nome: Guilherme Henrique Ferreira de Oliveira 
+Matrícula: 54883
+Lista: 2
+Exercício: 2
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 

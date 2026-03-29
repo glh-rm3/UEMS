@@ -1,4 +1,11 @@
-include <stdio.h>
+/*
+Nome: Guilherme Henrique Ferreira de Oliveira 
+Matrícula: 54883
+Lista: 2
+Exercício: 5
+*/
+
+#include <stdio.h>
 #include <stdlib.h>
 
 void realloc_hits(int **hits_array, int *hit_ticket, int cont);
