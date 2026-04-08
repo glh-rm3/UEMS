@@ -1,0 +1,9 @@
+/***************************************************************************************************
+Nome: Guilherme Henrique Ferreira de Oliveira
+Matrícula: 54883
+Lista: 3
+Exercício: 5
+
+ Qual a diferença entre alocação estática e alocação dinâmica?****************************************************************************************************/
+
+ R: A alocação estática ocorre quando o espaço de memória é reservado pelo compilador antes da execução do programa (tempo de compilação). Já a dinâmica, ocorre durante a execução do programa (runtime), permitindo solicitar memória conforme a necessidade.

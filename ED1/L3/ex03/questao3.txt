@@ -1,0 +1,9 @@
+/***************************************************************************************************
+Nome: Guilherme Henrique Ferreira de Oliveira
+Matrícula: 54883
+Lista: 3
+Exercício: 3
+
+Qual a diferença entre alocação sequencial e alocação encadeada?****************************************************************************************************/
+
+R: A principal diferença entre os dois modelos está na organização física dos dados e na forma de acesso à memória. Na sequencial os elementos são armazenados em endereços de memória vizinhos imediatos. Já na encadeada os elementos são armazenados em endereços espalhados na memória, conectados logicamente por ponteiros.

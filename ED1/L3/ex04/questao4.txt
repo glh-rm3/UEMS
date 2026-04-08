@@ -1,0 +1,11 @@
+/***************************************************************************************************
+Nome: Guilherme Henrique Ferreira de Oliveira
+Matrícula: 54883
+Lista: 3
+Exercício: 4
+
+Quais as vantagens de se utilizar alocação encadeada para um conjunto de elementos? Quais as
+possíveis desvantagens?
+****************************************************************************************************/
+
+R: A alocação encadeada é a escolha ideal quando a prioridade é a flexibilidade e o gerenciamento dinâmico de dados, especialmente quando não se sabe o tamanho final da estrutura. Uma desvantagem é a confiabilidade, pois se um único ponteiro no meio da lista for corrompido ou apontar para um endereço inválido, toda a sequência de dados após esse ponto é perdida, pois não há outra forma de encontrar os nós seguintes.

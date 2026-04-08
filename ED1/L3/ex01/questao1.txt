@@ -1,0 +1,10 @@
+/***************************************************************************************************
+Nome: Guilherme Henrique Ferreira de Oliveira 
+Matrícula: 54883
+Lista: 3
+Exercício: 1
+
+O que significa alocação sequencial de memória para um conjunto de elementos?
+**************************************************************************************************/
+
+R: Alocação sequencial em memória, ocorre quando um conjunto de elementos de um array, por exemplo, é armazenado em endereços sequenciais na memória, que são "vizinhos" imediatos, sem buraco entre eles. Pode ser observado que nesse tipo de alocação, podemos notar os endereços denotados em hexadecimal, onde é visto exatamente o tamanho do tipo que está sendo guardado de diferença entre cada endereço.

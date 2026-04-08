@@ -1,0 +1,10 @@
+/***************************************************************************************************
+Nome: Guilherme Henrique Ferreira de Oliveira 
+Matrícula: 54883
+Lista: 3
+Exercício: 2
+
+ O que significa alocação estática de memória para um conjunto de elementos?
+****************************************************************************************************/
+
+R: A alocação estática de memória para um conjunto de elementos acontece quando o espaço necessário é reservado no momento da compilação do programa. Isso significa que, antes mesmo de você executar o código, o sistema já sabe exatamente quantos bytes aquele conjunto vai ocupar e onde eles ficarão.
