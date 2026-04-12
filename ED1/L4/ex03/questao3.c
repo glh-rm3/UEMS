@@ -2,7 +2,7 @@
 Nome: Guilherme Henrique Ferreira de Oliveira 
 Matrícula: 54883
 Lista: 4
-Exercício: 03
+Exercício: 3
 
 Implemente a função reverso, que reposiciona os elementos na fila dinâmica de tal forma que o início
 da fila dinâmica torna-se o fim, e vice-versa.
@@ -64,12 +64,33 @@ int print_queue(Queue *q) {
     return 1;
 }
 
+int reverse_queue(Queue *q) {
+    if(q == NULL) return 0;
+
+    Elem *prev = NULL;
+    Elem *atual = q->start;
+                                    //   Seja uma fila [ A ] -> [ B ] -> [ C ] -> NULL
+    while(atual != NULL) {          //   Exemplo com a primeira iteração 
+        Elem *next = atual->next;   //   next = [B], que eh atual->prox [ A ] - > [ B ]
+        atual->next = prev;         //   agora o prox de A eh NULL, que eh prev, mas salvamos o resto da fila em cima, logo next = [ B ] -> [ C ] -> NULL
+        prev = atual;               //   prev = atual NULL = [ A ], no prox repet isso eh [ A ] = [ B ]
+        atual = next;               //   [ A ] =  [ B ] -> [ C ] - > NULL
+    }
+
+    q->start = prev;
+    return 1;
+}
+
 void FAILED_ADD(){
     puts("Failed to add to queue!");
 }
 
 void FAILED_PRINT() {
     puts("Failed to print!");
+}
+ 
+void FAILED_REVERSE() {
+    puts("Failed to reverse!");
 }
 
 int main() {
@@ -91,6 +112,12 @@ int main() {
         FAILED_PRINT();
     } else {
         puts("Success!");
+    }
+
+    if(!reverse_queue(q)) {
+        FAILED_REVERSE();
+    } else {
+        print_queue(q) ? puts("Success!") : FAILED_PRINT();
     }
     
     return 0;
