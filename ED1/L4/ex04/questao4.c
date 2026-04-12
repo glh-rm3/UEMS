@@ -161,8 +161,11 @@ int main() {
     }
 
     comp_queue(q1, q2);
-    if(!free_queue(q)) {
+    if(!free_queue(q1)) {
         puts("Failed free queue!");
     } 
+    if(!free_queue(q2)) {
+        puts("Failed free queue!");
+    }
     return 0;
 }
