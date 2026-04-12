@@ -81,6 +81,33 @@ int reverse_queue(Queue *q) {
     return 1;
 }
 
+int free_queue(Queue *q) {
+    if(q == NULL) return 0;
+
+    Elem *node = q->start;
+    while(node != NULL) {
+        Elem *temp = node;
+        node = node->next;
+        free(temp);
+    }
+    free(q);
+    return 1;
+}
+
+int free_queue(Queue *q) {
+    if(q == NULL) return 0;
+
+    Elem *node = q->start;
+    while(node != NULL) {
+        Elem *temp = node;
+        node = node->next;
+        free(temp);
+    }
+    free(q);
+    return 1;
+}
+
+
 void FAILED_ADD(){
     puts("Failed to add to queue!");
 }
@@ -120,5 +147,8 @@ int main() {
         print_queue(q) ? puts("Success!") : FAILED_PRINT();
     }
     
+    if(!free_queue(q)) {
+        puts("Failed free queue!");
+    } 
     return 0;
 }
