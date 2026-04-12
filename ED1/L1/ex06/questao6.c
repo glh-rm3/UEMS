@@ -24,7 +24,11 @@ main() {
     printf("Sum: %d\n", (*pi) + (*pj));
     printf("Sub: %d\n", (*pi) - (*pj));
     printf("Mult: %d\n", (*pi) * (*pj));
-    printf("Div: %.4f\n", (float)(*pi) / (float)(*pj));
+    if((float)(*pj) == 0) {
+        puts("Invalid Operation!");
+    } else {
+        printf("Div: %.4f\n", (float)(*pi) / (float)(*pj));
+    }
 
     return 0;
 }
