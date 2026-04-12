@@ -63,15 +63,42 @@ int print_queue(Queue *q) {
         printf("%d\n", node->data.value);
         node = node->next;
     }
+    printf("\n");
     return 1;
 }
 
 int comp_queue(Queue *q1, Queue *q2) {
     if(q1 == NULL || q2 == NULL) return 0; 
-    Elem *node = 
-    int contq1, contq2;
-    contq1 = contq2 = 0;
     
+    Elem *node1 = q1->start;
+    Elem *node2 = q2->start;
+
+    size_t sum = 0, size_q1 = 0, size_q2 = 0;
+    size_t tam_data = sizeof(node1->data);
+
+    while(node1 != NULL) {
+//        printf("Sizeof q1: %zu\n", sizeof(node->data)); apenas para verificar se pega 4byte, tipo int 
+        sum += sizeof(node1->data);   // sum = sum + tamanho do campo data, com isso sum pega o tamanho todo da lista
+        node1 = node1->next;          
+    }
+    size_q1 = sum/tam_data;
+    sum = 0;
+    
+    while(node2 != NULL) {
+        sum += sizeof(node2->data);
+        node2 = node2->next;
+    }
+    size_q2 = sum/tam_data;
+    
+    if(size_q1 > size_q2) {
+        puts("Queue 1 > Queue 2");
+    } else if(size_q1 == size_q2) {
+        puts("Queue 1 == Queue 2");
+    } else {
+        puts("Queue 1 < Queue 2");
+    }
+    printf("Queue 1: %zu\nQueue 2: %zu\n ", size_q1, size_q2);
+    return 1;    
 }
 
 void FAILED_ADD(){
@@ -119,4 +146,8 @@ int main() {
     } else {
         puts("Success!");
     }
+
+    comp_queue(q1, q2);
+
+    return 0;
 }
