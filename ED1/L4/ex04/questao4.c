@@ -101,6 +101,19 @@ int comp_queue(Queue *q1, Queue *q2) {
     return 1;    
 }
 
+int free_queue(Queue *q) {
+    if(q == NULL) return 0;
+
+    Elem *node = q->start;
+    while(node != NULL) {
+        Elem *temp = node;
+        node = node->next;
+        free(temp);
+    }
+    free(q);
+    return 1;
+}
+
 void FAILED_ADD(){
     puts("Failed to add to queue!");
 }
@@ -148,6 +161,8 @@ int main() {
     }
 
     comp_queue(q1, q2);
-
+    if(!free_queue(q)) {
+        puts("Failed free queue!");
+    } 
     return 0;
 }
