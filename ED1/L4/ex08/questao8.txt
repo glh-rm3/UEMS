@@ -1,0 +1,21 @@
+/***************************************************************************************************
+Nome: Guilherme Henrique Ferreira de Oliveira 
+Matrícula: 54883
+Lista: 4
+Exercício: 8
+
+. Dada as operações de fila insere I e remove R, escreva a configuração final da fila após as seguintes
+operações: I(10), I(20), R, I(30), I(45),I(21), R, R.
+****************************************************************************************************/
+
+Início: Fila vazia [ ]
+I(10): Entra o 10. >> Fila: [ 10 ]
+I(20): Entra o 20 atrás do 10. >> Fila: [ 10, 20 ]
+R: Remove o primeiro da fila. >> Fila: [ 20 ]
+I(30): Entra o 30. >> Fila: [ 20, 30 ]
+I(45): Entra o 45. >> Fila: [ 20, 30, 45 ]
+I(21): Entra o 21. >> Fila: [ 20, 30, 45, 21 ]
+R: Remove o primeiro da fila. >> Fila: [ 30, 45, 21 ]
+R: Remove o primeiro da fila. >> Fila: [ 45, 21 ]
+
+Configuração final da fila: [ 45, 21 ]

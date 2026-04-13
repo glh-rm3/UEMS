@@ -1,0 +1,12 @@
+/***************************************************************************************************
+Nome: Guilherme Henrique Ferreira de Oliveira 
+Matrícula: 54883
+Lista: 4
+Exercício: 2
+
+Em que situações uma fila pode ser utilizada?
+****************************************************************************************************/
+
+Uma situação envolve processamento de tarefas em ordem. Quando várias tarefas chegam e precisam ser executadas na sequência em que foram solicitadas, por exemplo: fila de impressão, fila de e-mails a enviar, jobs em um servidor.
+
+Outro exemplo são os sistemas operacionais, que usam filas para gerenciar quais processos ganham tempo de CPU.

@@ -1,0 +1,10 @@
+/***************************************************************************************************
+Nome: Guilherme Henrique Ferreira de Oliveira 
+Matrícula: 54883
+Lista: 4
+Exercício: 1
+
+O que é e como funciona uma estrutura do tipo fila?
+****************************************************************************************************/
+
+Uma estrutura do tipo fila é uma estrutura de dados linear que segue o princípio FIFO. Isso significa que o primeiro elemento a ser inserido será o primeiro a ser removido. Ou seja, quando adicionamos dados nessa fila, sempre colocamos no final. E quando removemos, pegamos o primeiro elemento que entrou, porque o que está na frente sai primeiro.
