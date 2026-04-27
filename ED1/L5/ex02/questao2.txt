@@ -1,0 +1,24 @@
+/***************************************************************************************************
+Nome: Guilherme Henrique Ferreira de Oliveira 
+Matrícula: 54883
+Lista: 5
+Exercício: 2
+
+2. Em que situações uma pilha pode ser utilizada?
+****************************************************************************************************/
+
+A estrutura de pilha é excelente para situações onde você precisa "voltar no tempo" ou gerenciar processos aninhados.
+
+Um das aplicações mais famosas, é o CTRL + Z,
+
+    Esta operação é feita com duas pilhas.
+
+A verificação de Expressão e Sintaxe,
+
+    Já que alguns compiladores e editores, utilizam pilhas para verificar se os símbolos de agrupamento,
+    (parênteses, colchetes e chaves), estão balanceados.
+
+
+
+
+

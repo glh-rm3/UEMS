@@ -1,0 +1,20 @@
+/***************************************************************************************************
+Nome: Guilherme Henrique Ferreira de Oliveira 
+Matrícula: 54883
+Lista: 5
+Exercício: 13
+
+Dada as operações de pilha insere I e remove R, escreva a configuração final da pilha após as seguintes
+operações: I(10), I(20), R, I(30), I(45), I(21), R, R.
+****************************************************************************************************/
+
+I 10 -> stack [10]
+I 20 -> stack [10, 20]
+R 20 -> stack [10]------------> sai 20
+I 30 -> stack [10, 30]
+I 45 -> stack [10, 30, 45]
+I 21 -> stack [10, 30, 45, 21]
+R 21 -> stack [10, 30, 45]------------> sai 21
+R 45 -> stack [10, 30]------------> sai 45
+
+I I R I I I R R

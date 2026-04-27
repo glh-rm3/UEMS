@@ -1,0 +1,22 @@
+/***************************************************************************************************
+Nome: Guilherme Henrique Ferreira de Oliveira 
+Matrícula: 54883
+Lista: 5
+Exercício: 3
+
+Suponha que uma pilha possua 4 valores na seguinte ordem: 1, 2, 3 e 4. Qual seria a sequencia correta
+de operações de inserção (I) e eliminação (E) para se obter os registros na ordem 2 4 3 1?
+****************************************************************************************************/
+
+Seja "I" inserção, "E" eliminação
+
+I 1 -> stack [1]
+I 2 -> stack [1, 2]
+E 2 -> stack [1]------------> sai 2
+I 3 -> stack [1, 3]
+I 4 -> stack [1, 3, 4]
+E 4 -> stack [1, 3]---------> sai 4
+E 3 -> stack [1]------------> sai 3
+E 1 -> stack [vazio]--------> sai 1
+
+I I E I I E E E
