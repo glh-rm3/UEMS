@@ -64,33 +64,54 @@ Content pop(Stack *st) {
 int is_equal(Stack *st0, Stack *st1) {
 	if(st0 == NULL || st1 == NULL) return -1;
 	
-	Stack *aux0 = create_stack(); //criei uma aux para não dar pop na st0 real
-	Stack *aux1 = create_stack(); //criei uma aux para não dar pop na st0 real
-
 	if(st0->qtd != st1->qtd) { //se qtd for diferente, não eh igual
 		return 0;
 	}
 
-	int is_equal = 1;
+	Stack *aux0 = create_stack(); 
+	Stack *aux1 = create_stack(); 
+
+	int is_equal = 1; // flag inica assumindo que eh igual 
 
 	while(!is_empty(st0)) {
-		Content c0 = pop(st0);
+		Content c0 = pop(st0); // puxa o primeiro elemento da st0, mesma coisa embaixo 
 		Content c1 = pop(st1);
 
-		push(aux0, c0);
+		push(aux0, c0); // salva os elementos na auxiliar de cada um 
 		push(aux1, c1);
 
-		if(c0.value != c1.value) {
+		if(c0.value != c1.value) { // se pelo menos um dos itens não forem iguais, a flag zera 
 			is_equal = 0;
-			break;
 		}
 	}
 
+    // devolve para pilha original 
 	while(!is_empty(aux0)) {
-		pus
+		push(st0, pop(aux0));
+		push(st1, pop(aux1));
 	}
 
-	return 1;
+    free(aux0);
+    free(aux1);
+	return is_equal;
+}
+
+int print_stack(Stack *st) {
+    if(st == NULL || st->qtd == 0) return 0;
+
+    Stack *print_temp = create_stack();
+
+    puts("Stack");
+    while(!is_empty(st)) {
+        Content c = pop(st);
+        printf("[%d]\n", c.value);
+        push(print_temp, c);
+    }
+    printf("====\n");
+    while(!is_empty(print_temp)) {
+        push(st, pop(print_temp));
+    }   
+    return 1;
 }
 
 int main() {
@@ -102,8 +123,11 @@ int main() {
 	push(st0, (Content){36});
 
 	push(st1, (Content){34});
-	push(st1, (Content){28});
+	push(st1, (Content){27});
 	push(st1, (Content){36});
+
+    print_stack(st0);
+    print_stack(st1);
 
 	if(is_equal(st0, st1)) {
 		puts("is equal!");

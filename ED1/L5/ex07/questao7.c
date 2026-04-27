@@ -43,9 +43,9 @@ int is_empty(Stack *st) {
 
 Content peek(Stack *st) {
     Content empty = {-1};
-    if() {
-
-    }
+    if(is_empty(st)) return empty;
+    
+    return st->data[st->qtd -1];
 }
 
 int push(Stack *st, Content num) {
@@ -63,16 +63,46 @@ Content pop(Stack *st) {
     return st->data[st->qtd];
 }
 
-sort_stack(Stack *st) {
+int sort_stack(Stack *st) {
+    if(st == NULL || st->qtd == 0) return 0;
     Stack *aux = create_stack();
 
-    while(!is_empty(st)) {
-        Content temp = pop(st);
-        while(!is_empty(aux) {
-
-
+    while(!is_empty(st)) {      // enquanto st não estiver vazia 
+        Content temp = pop(st);     // pop no primeiro elemento, trazendo para temp 
+        while(!is_empty(aux) && peek(aux).number > temp.number) { // Enquanto a aux não estiver vazia E o topo da aux for maior que o meu elemento atual
+            // isso significa que o temp deveria estar ABAIXO desse elemento da aux.
+            push(st, pop(aux));     // retiramos o elemento maior da aux e devolvemos ele para a st original.
+            // é aberto o caminho para o temp encontrar seu lugar correto.
         }
+        // agora que o caminho foi aberto ou a aux está vazia, ou o topo da aux é menor/igual a temp),
+        // coloca o temp na pilha auxiliar.
+        push(aux, temp);
     }
+    
+    // devolve para st
+    while (!is_empty(aux)) {
+        push(st, pop(aux));
+    }
+
+    free(aux);
+    return 1;
+}
+
+int print_stack(Stack *st) {
+    if(st == NULL || st->qtd == 0 ) return 0;
+
+    Stack *temp_print = create_stack();
+    while(!is_empty(st)) {
+        Content c = pop(st);
+        printf("[%d]\n", c.number);
+        push(temp_print, c);
+    }
+
+    while(!is_empty(temp_print)) {
+        push(st, pop(temp_print));
+    }
+    printf("====\n");
+    return 1;
 }
 
 int main() {
@@ -84,17 +114,8 @@ int main() {
     push(st, (Content){60});
     push(st, (Content){70});
     
-    Stack *temp_print = create_stack();
-    while(!is_empty(st)) {
-        Content c = pop(st);
-        printf("%d \n", c.number);
-        push(temp_print, c);
-    }
-
-    while(!is_empty(temp_print))
-        push(st, pop(temp_print)); //insere o content saida do pop da temporaria
-
+    print_stack(st);
     sort_stack(st);
-
-
+    print_stack(st);
+    return 0;
 }
