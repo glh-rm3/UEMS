@@ -37,28 +37,26 @@ int insert_stack(Stack *st, Content letter) {
 	st->word[st->qtd] = letter;
 	st->qtd++;
 	return 1;
+
 }
 
-int check_palindrome(Stack *st) {
+int is_palindrome(Stack *st) {
 	if(st == NULL) return 0;
 
-	int cont = 0;
-	size_t j = 0;
-	for(size_t i = st->qtd; i > 0; i--) {
-		if(st->word[j]->letter == st->word[i-1].letter) {
-			cont++;
-		}
-		j++;
+	int start = 0;
+	int end = st->qtd -1;
+    
+    while(start < end) {
+        if(st->word[start].letter != st->word[end].letter) 
+            return 0;
+         start = start + 1;
+        end = end - 1;  
     }
-	
-	printf("%d", cont);
-
+    return 1;
 }
 
 void FAILED_INSERT() {
 	puts("Failed to insert");
-
-
 }
 
 int main() {
@@ -67,6 +65,7 @@ int main() {
 	word = malloc(30 * sizeof(Content));
 	if(word == NULL) return -1;
 
+    printf("insert a word: ");
 	int word_tam = 0;
 	for(size_t i = 0; i < 30; i++) {
 		scanf("%c", &(word+i)->letter);
@@ -81,6 +80,12 @@ int main() {
 			FAILED_INSERT();
 		}
 	}
-	check_palindrome(st);
+    if(!is_palindrome(st)) {
+        puts("it is not a palindrome!");
+    } else {
+        puts("is palindrome!");
+    }
+
 	free(word);
+    return 0;
 }
