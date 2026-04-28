@@ -18,16 +18,16 @@ main() {
     printf("Input i and j: ");
     scanf("%d %d", &i, &j);
 
-    pi = &i;
-    pj = &j;
+    pi = &i; // pi agora aponta para o endereço de i 
+    pj = &j; // pj agora aponta para o endereço de j
 
-    printf("Sum: %d\n", (*pi) + (*pj));
-    printf("Sub: %d\n", (*pi) - (*pj));
-    printf("Mult: %d\n", (*pi) * (*pj));
-    if((float)(*pj) == 0) {
+    printf("Sum: %d\n", (*pi) + (*pj));  // soma os conteúdos apontados pelos ponteiros 
+    printf("Sub: %d\n", (*pi) - (*pj));  // subtrai os conteúdos apontados pelos ponteiros 
+    printf("Mult: %d\n", (*pi) * (*pj)); // multiplica os conteúdos apontados pelos ponteiros 
+    if((float)(*pj) == 0) {  // o denomindor é pj e ele nunca pode ser zero!
         puts("Invalid Operation!");
-    } else {
-        printf("Div: %.4f\n", (float)(*pi) / (float)(*pj));
+    } else {                 // senão eh 0, divide 
+        printf("Div: %.4f\n", (float)(*pi) / (float)(*pj)); // divide os conteúdos apontados pelos ponteiros 
     }
 
     return 0;
