@@ -15,18 +15,18 @@ Exercício: 4
 int 
 main() {
     int i, j, *aux;
-    printf("Input i: ");
-    scanf("%d", &i);
+    printf("Input i: "); 
+    scanf("%d", &i); 
     printf("Input j: ");
     scanf("%d", &j);
     
-    if(&i < &j) aux = &j;
-    else aux = &i;
+    if(&i < &j) aux = &j; // se endereço de i for menor que endereço de j, aux = endereço de j
+    else aux = &i;        // senão, aux recebe endereço de i
     
-    printf("\nContent: %d Address: %p\n", *aux, aux);
+    printf("\nContent: %d Address: %p\n", *aux, aux); // demonstra o conteúdo apontado por aux e o endereço que aux aponta
     printf("Address i: %p\n", &i);
     printf("Address j: %p\n", &j);
-    puts("A Stack cresce para baixo!");
+    puts("A Stack cresce para baixo!"); 
 
     return 0;
 }
