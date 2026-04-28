@@ -14,18 +14,18 @@ Exercício: 5
 
 int 
 main() {
-    int A, B, *pa, *pb;
+    int A, B, *pa, *pb; // duas variáveis inteiras e dois ponteiros
     printf("Input A and B: ");
     scanf("%d %d", &A, &B);
 
-    pa = &A;
-    pb = &B;
+    pa = &A; // atribuindo o endereço de A ao ponteiro pa
+    pb = &B; // atribuindo o endereço de B ao ponteito pb
 
-    *pa = *pa * 2;
-    *pb = *pb * 2;
+    *pa = *pa * 2; // conteúdo apontado por pa recebe conteúdo apontado vezes 2
+    *pb = *pb * 2; // conteúdo apontado por pb recebe conteúdo apontado vezes 2
 
-    printf("Sum: %d\n", (*pa) + (*pb));
-    printf("A value: %d\nB value: %d\n", A, B);
+    printf("Sum: %d\n", (*pa) + (*pb)); // print da soma, somando os conteúdo apontados
+    printf("A value: %d\nB value: %d\n", A, B); // mostra o valor resultado através da multiplicação anteriormente, feita utilizando o ponteiro
     
     return 0;
 }
