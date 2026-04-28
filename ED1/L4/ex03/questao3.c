@@ -36,6 +36,11 @@ Queue * create_queue() {
     return q;
 }
 
+int is_empty_queue(Queue *q) {
+    if(q == NULL) return 0;
+    return (q->start == NULL);
+}
+
 int enqueue(Queue *q, Content c) {
     if(q == NULL) return 0;
     Elem *node = malloc(sizeof(Elem));
@@ -53,32 +58,64 @@ int enqueue(Queue *q, Content c) {
     return 1;
 }
 
-int print_queue(Queue *q) {
-    if(q == NULL) return 0;
+Content denqueue(Queue *q) {
+    Content empty = {-1};
+    if(q == NULL || q->start == NULL)
+        return empty;
 
     Elem *node = q->start;
-    while(node != NULL) {
-        printf("%d\n", node->data.value);
-        node = node->next;
+    Content c = node->data;
+    q->start = node->next;
+
+    if(q->start == NULL)
+        q->end = NULL;
+
+    free(node);
+    return c;
+}
+
+int print_queue(Queue *q) {
+    if(q == NULL) return 0;
+    //Elem *node = q->start;
+    Queue *temp_print = create_queue();
+    while(!is_empty_queue(q)) {
+        Content c = denqueue(q);
+        printf("[%d] ", c.value);
+        enqueue(temp_print, c);
+    }
+
+    while(!is_empty_queue(temp_print)) {
+        enqueue(q, denqueue(temp_print));
     }
     return 1;
 }
 
-int reverse_queue(Queue *q) {
-    if(q == NULL) return 0;
+Queue * reverse_queue(Queue *q) {
+    if(q == NULL) return NULL;
 
-    Elem *prev = NULL;
+    /*Elem *prev = NULL;
     Elem *atual = q->start;
-                                    //   Seja uma fila [ A ] -> [ B ] -> [ C ] -> NULL
-    while(atual != NULL) {          //   Exemplo com a primeira iteração 
+    Elem *old_start = q->start;
+                                        //   Seja uma fila [ A ] -> [ B ] -> [ C ] -> NULL
+   
+   while(atual != NULL) {          //   Exemplo com a primeira iteração 
         Elem *next = atual->next;   //   next = [B], que eh atual->prox [ A ] - > [ B ]
         atual->next = prev;         //   agora o prox de A eh NULL, que eh prev, mas salvamos o resto da fila em cima, logo next = [ B ] -> [ C ] -> NULL
         prev = atual;               //   prev = atual NULL = [ A ], no prox repet isso eh [ A ] = [ B ]
         atual = next;               //   [ A ] =  [ B ] -> [ C ] - > NULL
     }
-
+*/
+    // IMPLEMENTAÇÃO PURISTA: NÃO FUNCIONA AAAA
+    Queue *new_invert = create_queue();
+    while(!is_empty_queue(q)) {
+        Content c = denqueue(q);
+        enqueue(new_invert, c);
+    }    
+    /*
     q->start = prev;
-    return 1;
+    q->end = old_start;
+    */
+    return new_invert;
 }
 
 int free_queue(Queue *q) {
@@ -115,7 +152,7 @@ int main() {
     c[2].value = 433;
     c[3].value = 533;
 
-    for(size_t i = 0; i < sizeof(c)/sizeof(int); i++) {
+    for(size_t i = 0; i < sizeof(c)/sizeof(c[0]); i++) {
         if(!enqueue(q, c[i])) {
             FAILED_ADD();
             break;
@@ -128,11 +165,14 @@ int main() {
         puts("Success!");
     }
 
-    if(!reverse_queue(q)) {
+/*    if(!reverse_queue(q)) {
         FAILED_REVERSE();
     } else {
         print_queue(q) ? puts("Success!") : FAILED_PRINT();
     }
+  */
+    Queue * reverse_q = reverse_queue(q);
+    print_queue(reverse_q);
     
     if(!free_queue(q)) {
         puts("Failed free queue!");
