@@ -2,9 +2,9 @@
 Nome: Guilherme Henrique Ferreira de Oliveira 
 Matrícula: 54883
 Lista: 7
-Exercício: 2
+Exercício: 3
 
-2. Escreva uma função iterativa que conta o número de nós de uma árvore binária.
+3. Escreva uma função que conta o número de folhas de uma árvore binária.
 ****************************************************************************************************/
 
 #include <stdio.h>
@@ -63,7 +63,6 @@ struct NO * pop(Stack *st) {
 }
 
 /***** END STACK SECTION *****/
-
 
 
 /***** TREE *****/  
@@ -190,7 +189,7 @@ struct NO* remove_atual(struct NO* atual){
     }
     no1 = atual;
     no2 = atual->esq;
-    while(no2->dir != NULL){
+    while(no2->dir != NULL) { 
         no1 = no2;
         no2 = no2->dir;
     }
@@ -243,14 +242,14 @@ int consulta_ArvBin(ArvBin* raiz, int valor){
 }
 
 void imprimeNO(struct NO* no, int nivel) {
-        if(no == NULL) return;
+    if(no == NULL) return;
         imprimeNO(no->dir, nivel + 1);
         for(int i = 0; i < nivel; i++) {
-                printf("   ");
+            printf("   ");
         }
 
-        printf("%d\n", no->info);
-        imprimeNO(no->esq, nivel + 1);
+    printf("%d\n", no->info);
+    imprimeNO(no->esq, nivel + 1);
 }
  
 void imprime(ArvBin *raiz) {
@@ -261,61 +260,41 @@ void imprime(ArvBin *raiz) {
     imprimeNO(*raiz, 0);
 }
 
+/***** END TREE SECTION *****/
+/***** END TREE SECTION *****/
 
+/***** FUNCAO CONTA FOLHA ITERATIVA *****/ 
 
-/***** Recursiva *****/ 
-
-void conta_no(struct NO* no, int *total_no) {
-    if(no == NULL) return;
-    
-    conta_no(no->dir, total_no);
-    (*total_no)++;
-    conta_no(no->esq, total_no);
-}
-
-int contador(ArvBin *raiz) {
+int conta_folha(ArvBin *raiz) {
     if(raiz == NULL ||
-      *raiz == NULL) {
-        return 0;
-    }
-
-    int total_no =  0;
-    conta_no(*raiz, &total_no);
-
-    return total_no;
-}
-
-/***** ITERATIVO ****/   
-int conta_no_iterativo(ArvBin *raiz) {
-    if(raiz == NULL || 
        *raiz == NULL) {
         return 0;
     }
-    
-    Stack *st = create_stack();     // cria uma pilha 
 
-    struct NO* atual = *raiz;       // atual aponta para a raiz da arvore   
-    int total = 0;                  // contador 
-    push(st, atual);                // empilha o ponteiro da raiz na pilha 
+    Stack *st = create_stack();
+    struct NO* atual = *raiz;
+    int total = 0;
+    push(st, atual);
 
-    while(!is_empty(st)) {          // enquanto a pilha não estiver vazia 
-        atual = pop(st);            // atual recebe o item que estava na pilha, desempilhando a mesma 
-        total++;                    // incrementa a cada desempilhada 
- 
-       if(atual->dir != NULL) {     // se a direita do meu atual for diferentenull 
-            push(st, atual->dir);   // empilha atual direita 
+    while(!is_empty(st)) {
+        atual = pop(st);
+
+        if(atual->dir != NULL) {     // se a direita do meu atual for diferentenull 
+            push(st, atual->dir);    // empilha atual direita 
         }
+
         if(atual->esq != NULL) {    // se esquerda do meu atual for diferente de null 
             push(st, atual->esq);   // empilha atual esquerda 
         }
+
+        if(atual->dir == NULL && 
+        atual->esq == NULL) {
+            total++;
+        }
     }
-
-    free(st);                       // libera a pilha 
-    return total;                   // retorna o total 
-
+    free(st);
+    return total;
 }
-
-/***** END ITERATIVO *****/ 
 
 int main() {
     ArvBin* raiz = cria_ArvBin();
@@ -339,7 +318,7 @@ int main() {
     insere_ArvBin(raiz, 73);
 
     imprime(raiz);
-    printf("\n\nTotal de no: %d\n", conta_no_iterativo(raiz));
+    printf("\n\nTotal de folhas: %d\n", conta_folha(raiz));
 
     return 0;
 }
