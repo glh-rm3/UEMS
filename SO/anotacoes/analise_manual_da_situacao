@@ -1,0 +1,20 @@
+1 - Qual é o recurso compartilhado nessa situação?
+	- O estoque
+
+2 - Quais são os processos ou agentes que acessam esse recurso?	
+	- Processo de baixa no estoque. Os vendedores são os agentes.
+
+3 - Qual erro pode acontecer se dois atendentes venderem ao mesmo tempo?
+	 - O estoque pode não ser baixado corretamente, caso o programa não trate a concorrência.
+
+4 - Por que o estoque final pode ficar incorreto?
+	 - O estoque final tem a possibilidade de ficar incorreto caso tenha vendas feitas ao mesmo tempo, 
+	   com dois ou mais atendentes acessando o estoque simultaneamente.
+
+5 - Qual parte da operação pode ser considerada uma região crítica?
+     - A parte crítica apresentada no problema é a questão da remoção do estoque, onde quando dois ou mais funcionários
+	   fazem a remoção, o estoque fica incorreto.
+
+6. Como o sistema poderia evitar esse problema?
+	- Usando a estrutura de dados FILA, onde o programa enfieira as requisições, fazendo a baixa no estoque
+	  de acordo com a ordem em que as requisições chegaram, seguindo a regra FIFO (First In - First Out).
