@@ -1,7 +1,18 @@
-#include <stdio.h>
-#include<stdlib.h>
+/***************************************************************************************************
+Nome: Guilherme Henrique Ferreira de Oliveira 
+Matrícula: 54883
+Lista: 7
+Exercício: 9    
 
-struct NO{
+10. Escreva uma função que retorna verdadeiro se uma árvore binária é uma árvore binária de busca e
+falso caso contrário.
+****************************************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h> 
+
+struct NO {
     int info;
     struct NO *esq;
     struct NO *dir;
@@ -9,6 +20,8 @@ struct NO{
 
 typedef struct NO* ArvBin;
 
+
+/***** TREE *****/  
 ArvBin* cria_ArvBin(){
     ArvBin* raiz = (ArvBin*)malloc(sizeof(ArvBin));
     if(raiz != NULL)
@@ -190,40 +203,44 @@ void imprimeNO(struct NO* no, int nivel) {
         for(int i = 0; i < nivel; i++) {
                 printf("   ");
         }
-                printf("%d\n", no->info);
-                imprimeNO(no->esq, nivel + 1);
+
+        printf("%d\n", no->info);
+        imprimeNO(no->esq, nivel + 1);
 }
  
 void imprime(ArvBin *raiz) {
-       if(raiz == NULL || *raiz == NULL) {
-                printf("Arvore vazia\n");
-                return;
-        }
-        imprimeNO(*raiz, 0);
+    if(raiz == NULL || *raiz == NULL) {
+        printf("Arvore vazia\n");
+        return;
+    }
+    imprimeNO(*raiz, 0);
+    printf("\n\n");
 }
 
-int conta_no(ArvBin *raiz) {
-	if(raiz == NULL || *raiz == NULL) {
-		return 0;
-	}
-	
-	struct NO* atual = *raiz;
-	struct NO* esq = *raiz;
-	struct NO* dir = *raiz;
+int arv_bin(struct NO* atual, int MIN, int MAX) {
+    if(atual == NULL) return 1;
 
-	int tesq, tdir;
-	tesq = tdir = 0;
-	while(atual) {
-		esq = esq->esq;
-		tesq++;
-		dir = dir->dir;
-		tdir++;
-	}
-	
-	return tdir + tesq;
+    // Se o valor do nó atual estourar os limites permitidos, não é árvore de busca!
+    if (atual->info <= MIN || atual->info >= MAX) {
+    return 0;
+    }
+
+    // Esquerda: o máximo vira o valor atual. Direita: o mínimo vira o valor atual.
+    return arv_bin(atual->esq, MIN, atual->info) && arv_bin(atual->dir, atual->info, MAX);
 }
 
-int main(){
+int verifica_arvore_bin_busca(ArvBin *raiz) {
+    if(raiz == NULL || *raiz == NULL) {
+        printf("Arvore inexistente!");
+        return -1;
+    }
+
+    struct NO* atual = *raiz;
+    
+    return arv_bin(atual, INT_MIN, INT_MAX);
+}
+
+int main() {
     ArvBin* raiz = cria_ArvBin();
     insere_ArvBin(raiz, 50);
     insere_ArvBin(raiz, 40);
@@ -231,7 +248,7 @@ int main(){
     insere_ArvBin(raiz, 30);
     insere_ArvBin(raiz, 45);
     insere_ArvBin(raiz, 65);
-    insere_ArvBin(raiz, 30);
+    insere_ArvBin(raiz, 79);
     insere_ArvBin(raiz, 80);
     insere_ArvBin(raiz, 54);
     insere_ArvBin(raiz, 74);
@@ -240,12 +257,33 @@ int main(){
     insere_ArvBin(raiz, 1);
     insere_ArvBin(raiz, 7);
     insere_ArvBin(raiz, 28);
-    insere_ArvBin(raiz, 5);
+    insere_ArvBin(raiz, 500);
+    insere_ArvBin(raiz, 250);
+    insere_ArvBin(raiz, 73);
 
     imprime(raiz);
-    printf("\n\nQuantidade de no: %d", conta_no(raiz));
-	
-	
+    
+    if(verifica_arvore_bin_busca(raiz)) {
+        printf("Arvore de busca binaria!\n");
+        printf("-------------------------------------\n");
+    } else {
+        printf("Nao eh arvore de busca binaria.\n");
+        printf("-------------------------------------\n");
+    }
+
+    struct NO* no_bugado = *raiz;
+    no_bugado = no_bugado->dir->dir->esq; // Caminha até o 250 (50 -> 99 -> 500 -> 250)
+    no_bugado->info = 45;                 // Força o valor inválido
+
+    imprime(raiz);  
+
+    if(verifica_arvore_bin_busca(raiz)) {
+        printf("Arvore de busca binaria!\n");
+        printf("-------------------------------------\n");
+    } else {
+        printf("Nao eh arvore de busca binaria.\n");
+        printf("-------------------------------------\n");
+    }
     return 0;
 }
 
