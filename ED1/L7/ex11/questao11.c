@@ -265,8 +265,28 @@ void imprime(ArvBin *raiz) {
 
 int mirrored_tree(ArvBin *raiz) {
 	if(raiz == NULL) return 0;
+    
+    Stack *st = create_stack();
+    struct NO* atual;
+    push(st, *raiz);
 
-	
+    while(!is_empty(st)) {
+        atual = pop(st);
+
+        struct NO* temp = atual->esq;
+        atual->esq = atual->dir;
+        atual->dir = temp;
+
+        if(atual->dir != NULL) {
+            push(st, atual->dir); 
+        }
+        
+        if(atual->esq != NULL) {  
+            push(st, atual->esq); 
+        }
+    }
+    free(st);
+    return 1;
 }
 
 int main() {
@@ -289,6 +309,11 @@ int main() {
     insere_ArvBin(raiz, 500);
     insere_ArvBin(raiz, 250);
     insere_ArvBin(raiz, 73);
+
+    imprime(raiz);
+    mirrored_tree(raiz);
+    printf("\n----------------------------------------------------\n");
+    imprime(raiz);
 
     return 0;
 }
